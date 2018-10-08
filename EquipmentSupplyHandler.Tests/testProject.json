@@ -1,0 +1,8 @@
+﻿{
+  "DelayedNotificatorConfig": {
+    "DelayInSeconds": 3
+  },
+  "ConnectionStrings": {
+    "DefaultConnection": "Server=localhost\\SQLEXPRESS;Database=ESH_test_db;Trusted_Connection=True;"
+  }
+}

@@ -1,0 +1,64 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2010
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ESHRepository.Core", "ESHRepository\ESHRepository.Core.csproj", "{4AE08182-E8A4-4498-88BB-38ADD9DCF9F8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ESHRepository.EF", "ESHRepository.EF\ESHRepository.EF.csproj", "{74F35768-D822-4961-86DF-7667D78988B5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Notifications", "Notifications", "{79814205-5600-4644-95A9-87486B23E8C6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Notifications", "Notifications.Infractructure\Notifications.csproj", "{3CECF0BC-D590-47F1-94CA-329D0C5C35D4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Notification.Infrastructure.Tests", "Notification.Infrastructure.Tests\Notification.Infrastructure.Tests.csproj", "{2E44A787-FBBE-419F-A7A7-27F7D31327D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EquipmentSupplyHandler", "EquipmentSupplyHandler\EquipmentSupplyHandler.csproj", "{D0782C60-CD58-45B6-B13F-12F46B340C01}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EquipmentSupplyHandler.Tests", "EquipmentSupplyHandler.Tests\EquipmentSupplyHandler.Tests.csproj", "{0FE34686-398B-4696-9ED2-C5171C2C22FB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4AE08182-E8A4-4498-88BB-38ADD9DCF9F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AE08182-E8A4-4498-88BB-38ADD9DCF9F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AE08182-E8A4-4498-88BB-38ADD9DCF9F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AE08182-E8A4-4498-88BB-38ADD9DCF9F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74F35768-D822-4961-86DF-7667D78988B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74F35768-D822-4961-86DF-7667D78988B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74F35768-D822-4961-86DF-7667D78988B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74F35768-D822-4961-86DF-7667D78988B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CECF0BC-D590-47F1-94CA-329D0C5C35D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CECF0BC-D590-47F1-94CA-329D0C5C35D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CECF0BC-D590-47F1-94CA-329D0C5C35D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CECF0BC-D590-47F1-94CA-329D0C5C35D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E44A787-FBBE-419F-A7A7-27F7D31327D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E44A787-FBBE-419F-A7A7-27F7D31327D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E44A787-FBBE-419F-A7A7-27F7D31327D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E44A787-FBBE-419F-A7A7-27F7D31327D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0782C60-CD58-45B6-B13F-12F46B340C01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0782C60-CD58-45B6-B13F-12F46B340C01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0782C60-CD58-45B6-B13F-12F46B340C01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0782C60-CD58-45B6-B13F-12F46B340C01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FE34686-398B-4696-9ED2-C5171C2C22FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FE34686-398B-4696-9ED2-C5171C2C22FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FE34686-398B-4696-9ED2-C5171C2C22FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FE34686-398B-4696-9ED2-C5171C2C22FB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3CECF0BC-D590-47F1-94CA-329D0C5C35D4} = {79814205-5600-4644-95A9-87486B23E8C6}
+		{2E44A787-FBBE-419F-A7A7-27F7D31327D4} = {79814205-5600-4644-95A9-87486B23E8C6}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0681179D-7A77-49AB-AB18-0838ED73C96F}
+	EndGlobalSection
+	GlobalSection(Performance) = preSolution
+		HasPerformanceSessions = true
+	EndGlobalSection
+EndGlobal
