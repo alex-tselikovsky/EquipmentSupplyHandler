@@ -37,7 +37,7 @@ namespace EquipmentSupplyHandler.Tests
                         {
                             db.Database.ExecuteSqlCommand(@"
                             Drop table Supplies                        
-                            Drop table EquipmentType
+                            Drop table EquipmentTypes
                         Drop table Suppliers
                         ");
                         }

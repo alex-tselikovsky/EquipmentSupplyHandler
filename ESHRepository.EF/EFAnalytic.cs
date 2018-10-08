@@ -22,7 +22,7 @@ namespace ESHRepository.EF
             DateTime end = start.AddMonths(1);
             return await _context.EquipmentCount.AsNoTracking().FromSql(
                 $@" Select Count = Sum(s.Count), EquipmentName = et.Name , EquipmentId =s.EquipmentTypeId from Supplies s
-                inner join EquipmentType as et on et.Id = s.EquipmentTypeId
+                inner join EquipmentTypes as et on et.Id = s.EquipmentTypeId
                 where s.DeliveryDate >= {start.ToString("yyyy-MM-dd")} 
                 and s.DeliveryDate < {end.ToString("yyyy-MM-dd")} 
                 and s.SupplierId = {supplierId}
@@ -37,7 +37,7 @@ namespace ESHRepository.EF
             DateTime end = start.AddYears(1);
             var dbResult =  await _context.SupplierRatio.AsNoTracking().FromSql(
                  $@"Select SuppliesCount = Sum(s.Count), SupplierName = sr.Name, SupplierId = s.SupplierId from Supplies s
-                inner join EquipmentType as et on et.Id = s.EquipmentTypeId
+                inner join EquipmentTypes as et on et.Id = s.EquipmentTypeId
                 inner join Suppliers as sr on sr.Id = s.SupplierId
                 where s.DeliveryDate >= {start.ToString("yyyy-MM-dd")} 
                 and s.DeliveryDate < {end.ToString("yyyy-MM-dd")} 
