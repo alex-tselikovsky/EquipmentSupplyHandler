@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ESHRepository.EF.Model
+﻿namespace ESHRepository.EF.Model
 {
     public class SupplierRatioDB
     {

@@ -27,8 +27,7 @@ namespace ESHRepository.EF
                 and s.DeliveryDate < {end.ToString("yyyy-MM-dd")} 
                 and s.SupplierId = {supplierId}
                 group by s.EquipmentTypeId, s.SupplierId, et.Name
-                order by Count desc
-").ToArrayAsync();
+                order by Count desc").ToArrayAsync();
         }
 
         public async Task<IEnumerable<SupplierRatio>> GetSupplierRatio(int year)

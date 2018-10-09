@@ -40,9 +40,6 @@ namespace Notifications.Infractructure
         void StartTimer()
         {
             lastTimerStart = DateTime.Now;
-            //if (Timer == null) Timer = new Timer(
-            //    async state => await NotificationProcessor.Process(GetCurrentNotificationsPack()), null, (int)Interval.TotalMilliseconds, Timeout.Infinite);
-            //else Timer.Change((int)Interval.TotalMilliseconds, Timeout.Infinite);
             Task.Delay((int)Interval.TotalMilliseconds).ContinueWith((task) => NotificationProcessor.Process(GetCurrentNotificationsPack()));
         }
 
@@ -81,8 +78,6 @@ namespace Notifications.Infractructure
                 //Если уже прошло время последнего интервала, заканчиваем обработку и запускаем новый таймер для следующей порции событий
                 if (currentOperation.Created.Subtract(lastTimerStart) > Interval)
                 {
-                    //Console.WriteLine($"КОнец тайм зоны {lastTimerStart.ToString("ss.fff")}");
-                    // Debug.Write($"КОнец тайм зоны {lastTimerStart.ToString("ss.fff")}");
                     StartTimer();
                     break;
                 }
@@ -91,13 +86,6 @@ namespace Notifications.Infractructure
             return notificationsPart;
         }
 
-        //void TimerCallback(object o)
-        //{
-
-        //    //Обработка полученной порции событий
-        //    //  Console.WriteLine($"ОБработка сообщений в зоне {lastTimerStart.ToString("ss.fff")}, length = {notificationsPart.Count}");
-        //    NotificationProcessor.Process(notificationsPart);
-        //}
     }
 
 }
