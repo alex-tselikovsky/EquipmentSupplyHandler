@@ -3,25 +3,21 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace EquipmentSupplyHandler.Tests.CRUDClients
 {
     abstract class CRUDClient<T>
     {
-        private readonly HttpClient _client;
-        private readonly TestWebApplicationFactory<Startup> _factory;
-        protected abstract string relativeUri { get; }// = "/api/equipment";
+        readonly HttpClient _client;
         Uri absoluteUri = null;
-        public CRUDClient(TestWebApplicationFactory<Startup> factory)
+        protected CRUDClient(TestWebApplicationFactory<Startup> factory, string relativeUrl)
         {
-            _factory = factory;
             _client = factory.CreateClient(new WebApplicationFactoryClientOptions
             {
                 AllowAutoRedirect = false
             });
-            absoluteUri = new Uri(_client.BaseAddress, relativeUri);
+            absoluteUri = new Uri(_client.BaseAddress, relativeUrl);
         }
 
         public virtual async Task CreateAsync(T element)

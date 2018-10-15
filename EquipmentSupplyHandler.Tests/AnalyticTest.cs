@@ -15,11 +15,9 @@ namespace EquipmentSupplyHandler.Tests
     public class AnalyticTest : IClassFixture<TestWebApplicationFactory<Startup>>
     {
         private readonly HttpClient _client;
-        private readonly TestWebApplicationFactory<Startup> _factory;
 
         public AnalyticTest(TestWebApplicationFactory<Startup> factory)
         {
-            _factory = factory;
             _client = factory.WithWebHostBuilder(builder =>
             {
                 builder.ConfigureServices(services =>
