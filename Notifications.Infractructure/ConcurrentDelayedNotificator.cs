@@ -49,17 +49,13 @@ namespace Notifications.Infractructure
             while (true)
             {
                 var dequeued = Notifications.TryDequeue(out Notification<T> currentOperation);
-                Thread.Yield();
 
                 if (!dequeued)
                 {
-                    Thread.Yield();
                     InProgress = 0;
-                    Thread.Yield();
                     //В очередь данного таймера уже не летят сообщения, но они там могут быть, попав до сброса InProgress
                     //Проверяем не прилетело ли к нам еще чего
                     dequeued = Notifications.TryDequeue(out currentOperation);
-                    Thread.Yield();
                     //Если сообщение извлечено, 
                     //Значит либо к нашему таймеру прилетели сообщения, либо запустился новый таймер
                     if (dequeued)
