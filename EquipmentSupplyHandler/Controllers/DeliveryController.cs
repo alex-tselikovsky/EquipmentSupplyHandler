@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using EquipmentSupplyHandler.Notifications;
-using ESHRepository;
 using ESHRepository.Model;
 using ESHRepository.Repositories;
 using Microsoft.AspNetCore.Mvc;

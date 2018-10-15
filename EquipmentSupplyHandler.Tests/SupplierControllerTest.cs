@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using ESHRepository.Model;
 using EquipmentSupplyHandler.Tests.CRUDClients;
-[assembly: CollectionBehavior(DisableTestParallelization = true)]
 
 namespace EquipmentSupplyHandler.Tests
 {

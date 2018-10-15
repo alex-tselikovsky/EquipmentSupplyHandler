@@ -6,17 +6,13 @@ using System.Threading.Tasks;
 
 namespace Notifications.Infractructure
 {
-
     public class ConcurrentDelayedNotificator<T>:INotificator<T>
     {
         ConcurrentQueue<Notification<T>> Notifications { get; set; } = new ConcurrentQueue<Notification<T>>();
         TimeSpan Interval { get; set; }
-        public Timer Timer { get; set; }
         int InProgress = 0;
-        private DateTime lastTimerStart = DateTime.Now;
+        DateTime lastTimerStart = DateTime.Now;
         INotificationsProcessor<T> NotificationProcessor { get; set; }
-
-        public static int NotificationsNumber = 0;
 
         public ConcurrentDelayedNotificator(DelayedNotificatorConfig config, INotificationsProcessor<T> notificationProcessor)
         {
@@ -33,8 +29,7 @@ namespace Notifications.Infractructure
 
         void TryStartTimer()
         {
-            var startTimer = Interlocked.Exchange(ref InProgress, 1) == 0;
-            if (startTimer)
+            if (Interlocked.Exchange(ref InProgress, 1) == 0)
                 StartTimer();
         }
         void StartTimer()
@@ -77,7 +72,6 @@ namespace Notifications.Infractructure
                     StartTimer();
                     break;
                 }
-
             }
             return notificationsPart;
         }

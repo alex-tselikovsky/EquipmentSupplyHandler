@@ -1,12 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc.Testing;
-using System;
-using System.Collections.Generic;
-using System.Net.Http;
+﻿using System;
 using Xunit;
 using System.Threading.Tasks;
-using System.Linq;
 using ESHRepository.Model;
-using System.Net;
 using EquipmentSupplyHandler.Tests.CRUDClients;
 
 namespace EquipmentSupplyHandler.Tests

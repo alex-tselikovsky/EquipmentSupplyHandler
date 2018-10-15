@@ -1,9 +1,6 @@
-﻿using System;
-using System.Net.Http;
-using Xunit;
+﻿using Xunit;
 using System.Threading.Tasks;
 using ESHRepository.Model;
-using System.Net;
 using EquipmentSupplyHandler.Tests.CRUDClients;
 
 namespace EquipmentSupplyHandler.Tests

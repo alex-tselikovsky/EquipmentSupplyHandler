@@ -3,7 +3,6 @@ using System;
 
 namespace EquipmentSupplyHandler.Notifications
 {
-   
     public class SupplyOperation
     {
         public Supply Supply { get; set;}
@@ -18,6 +17,5 @@ namespace EquipmentSupplyHandler.Notifications
         CreatedAndDeleted = Created|Deleted,
         CreatedUpdatedAndDeleted = Created|Updated|Deleted,
         CreatedAndUpdated = Created|Updated,
-
     }
 }

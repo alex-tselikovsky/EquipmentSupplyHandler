@@ -1,7 +1,4 @@
 ﻿using EquipmentSupplyHandler.ConfigModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Threading.Tasks;
@@ -26,7 +23,6 @@ namespace EquipmentSupplyHandler.Notifications
                     sc.UseDefaultCredentials = false;
                     sc.Credentials = new NetworkCredential(EmailSettings.SMTPUser, EmailSettings.SMTPPassword);
                     await sc.SendMailAsync(mm);
-                    //return Task.CompletedTask;
                 }
             }
         }

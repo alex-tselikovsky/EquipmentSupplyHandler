@@ -1,11 +1,11 @@
-﻿using ESHRepository.EF.Model;
-using ESHRepository.Interfaces.Model;
+﻿using ESHRepository.Interfaces.Model;
 using ESHRepository.Interfaces.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Data.SqlClient;
 
 namespace ESHRepository.EF
 {
@@ -23,11 +23,14 @@ namespace ESHRepository.EF
             return await _context.EquipmentCount.AsNoTracking().FromSql(
                 $@" Select Count = Sum(s.Count), EquipmentName = et.Name , EquipmentId =s.EquipmentTypeId from Supplies s
                 inner join EquipmentTypes as et on et.Id = s.EquipmentTypeId
-                where s.DeliveryDate >= {start.ToString("yyyy-MM-dd")} 
-                and s.DeliveryDate < {end.ToString("yyyy-MM-dd")} 
-                and s.SupplierId = {supplierId}
+                where s.DeliveryDate >= @start 
+                and s.DeliveryDate < @end
+                and s.SupplierId = @supplierId
                 group by s.EquipmentTypeId, s.SupplierId, et.Name
-                order by Count desc").ToArrayAsync();
+                order by Count desc", 
+                new SqlParameter("@supplierId",supplierId),
+                new SqlParameter("@start", start.ToString("yyyy-MM-dd")),
+                new SqlParameter("@end", end.ToString("yyyy-MM-dd"))).ToArrayAsync();
         }
 
         public async Task<IEnumerable<SupplierRatio>> GetSupplierRatio(int year)
@@ -38,10 +41,12 @@ namespace ESHRepository.EF
                  $@"Select SuppliesCount = Sum(s.Count), SupplierName = sr.Name, SupplierId = s.SupplierId from Supplies s
                 inner join EquipmentTypes as et on et.Id = s.EquipmentTypeId
                 inner join Suppliers as sr on sr.Id = s.SupplierId
-                where s.DeliveryDate >= {start.ToString("yyyy-MM-dd")} 
-                and s.DeliveryDate < {end.ToString("yyyy-MM-dd")} 
+                where s.DeliveryDate >= @start 
+                and s.DeliveryDate < @end
                 group by s.SupplierId, sr.Name
-                order by SuppliesCount desc").ToArrayAsync();
+                order by SuppliesCount desc",
+                new SqlParameter("@start", start.ToString("yyyy-MM-dd")),
+                new SqlParameter("@end", end.ToString("yyyy-MM-dd"))).ToArrayAsync();
             var count = dbResult.Sum(r => r.SuppliesCount);
             return dbResult.Select(r => new SupplierRatio()
             {

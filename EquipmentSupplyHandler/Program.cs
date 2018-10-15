@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using System;
 
 namespace EquipmentSupplyHandler
 {
@@ -17,7 +16,6 @@ namespace EquipmentSupplyHandler
                 var context = services.GetRequiredService<ESHContext>();
                 context.Database.EnsureCreated();
             }
-              
             host.Run();
         }
 
