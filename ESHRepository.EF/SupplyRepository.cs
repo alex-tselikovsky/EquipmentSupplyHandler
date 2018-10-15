@@ -12,7 +12,7 @@ namespace ESHRepository.EF
     {
         public SupplyRepository(ESHContext context) : base(context){}
 
-        protected override IQueryable<Supply> Query => base.Query;//.Include(s=>s.EquipmentType);
+        protected override IQueryable<Supply> Query => base.Query;
 
         public async Task<IEnumerable<Supply>> GetAsync(DateTime start, DateTime finish)
         {

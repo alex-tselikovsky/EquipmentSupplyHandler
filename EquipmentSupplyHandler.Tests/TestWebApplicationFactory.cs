@@ -22,7 +22,6 @@ namespace EquipmentSupplyHandler.Tests
                     var scopedServices = scope.ServiceProvider;
                     var db = scopedServices.GetRequiredService<ESHContext>();
 
-                    // Ensure the database is created.
                     db.Database.OpenConnection();
                     try
                     {

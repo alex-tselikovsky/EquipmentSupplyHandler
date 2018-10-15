@@ -26,7 +26,6 @@ namespace EquipmentSupplyHandler.Notifications
                     sc.UseDefaultCredentials = false;
                     sc.Credentials = new NetworkCredential(EmailSettings.SMTPUser, EmailSettings.SMTPPassword);
                     await sc.SendMailAsync(mm);
-                    //return Task.CompletedTask;
                 }
             }
         }
