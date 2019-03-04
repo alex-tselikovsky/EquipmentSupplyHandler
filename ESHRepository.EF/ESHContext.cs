@@ -16,6 +16,5 @@ namespace ESHRepository.EF
         {
             Database.EnsureCreated();
         }
-
     }
 }

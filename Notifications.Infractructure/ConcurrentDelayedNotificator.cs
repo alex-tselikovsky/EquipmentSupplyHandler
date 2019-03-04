@@ -27,6 +27,9 @@ namespace Notifications.Infractructure
                 TryStartTimer();
         }
 
+        /// <summary>
+        /// Пробует захватить таймер
+        /// </summary>
         void TryStartTimer()
         {
             if (Interlocked.Exchange(ref InProgress, 1) == 0)
@@ -38,41 +41,41 @@ namespace Notifications.Infractructure
             Task.Delay((int)Interval.TotalMilliseconds).ContinueWith((task) => NotificationProcessor.Process(GetCurrentNotificationsPack()));
         }
 
+
         List<Notification<T>> GetCurrentNotificationsPack()
         {
             List<Notification<T>> notificationsPart = new List<Notification<T>>();
-            while (true)
+
+            while (Notifications.TryDequeue(out Notification<T> currentOperation))
             {
-                var dequeued = Notifications.TryDequeue(out Notification<T> currentOperation);
-
-                if (!dequeued)
-                {
-                    InProgress = 0;
-                    //В очередь данного таймера уже не летят сообщения, но они там могут быть, попав до сброса InProgress
-                    //Проверяем не прилетело ли к нам еще чего
-                    dequeued = Notifications.TryDequeue(out currentOperation);
-                    //Если сообщение извлечено, 
-                    //Значит либо к нашему таймеру прилетели сообщения, либо запустился новый таймер
-                    if (dequeued)
-                    {
-                        //запустим таймер, если он не был запущен
-                        TryStartTimer();
-                        //Складываем сообщения
-                        notificationsPart.Add(currentOperation);
-                    }
-                    break;
-                }
-
-                //Складываем сообщения
+                //Складываем сообщение
                 notificationsPart.Add(currentOperation);
 
                 //Если уже прошло время последнего интервала, заканчиваем обработку и запускаем новый таймер для следующей порции событий
                 if (currentOperation.Created.Subtract(lastTimerStart) > Interval)
                 {
                     StartTimer();
-                    break;
+                    return notificationsPart;
                 }
             }
+
+
+            //В очереди не было сообщений - отпускаем таймер
+            InProgress = 0;
+
+            //В очередь данного таймера уже не летят сообщения, но они там могут быть, попав до сброса InProgress
+            //Проверяем не прилетело ли к нам еще чего
+            if (Notifications.TryDequeue(out Notification<T> nextOperation))
+            {
+                //Если сообщение извлечено, 
+                //Значит либо к нашему таймеру прилетели сообщения, либо запустился новый таймер
+
+                //запустим таймер, если он не был запущен
+                TryStartTimer();
+                //Складываем сообщения
+                notificationsPart.Add(nextOperation);
+            }
+
             return notificationsPart;
         }
 
