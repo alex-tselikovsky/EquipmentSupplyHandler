@@ -1,4 +1,6 @@
-Решение EquipmentSupplyHandler (ESH)
+Условие задачи в https://github.com/alex-tselikovsky/EquipmentSupplyHandler/blob/master/task.md
+
+Описание решения EquipmentSupplyHandler (ESH)
 
 Проект ESHRepository.Core
 
